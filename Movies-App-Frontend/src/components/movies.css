@@ -1,0 +1,38 @@
+.cardc {
+    border: solid red 2px;
+    width: 18rem;
+    height: 30rem;
+    z-index: "2";
+    background-color: #212529;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.colm {
+    color: #3399FF;
+    margin-bottom: 30px;
+   
+    align-items: center;
+    justify-content: center;
+    
+
+
+}
+
+.imgm {
+    width: 14rem;
+    height: 22rem;
+    border-radius: "5px";
+}
+
+.cont-button {
+    display: flex;
+    width: 230px;
+}
+
+.cont-button button {
+    height: 40px;
+    width: 230px;
+}

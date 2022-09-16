@@ -1,0 +1,25 @@
+.search{
+    text-align: center;
+    margin-top: 20px;
+     color: white
+}
+
+.search-in{
+    
+    border-radius:15px; 
+    border:none;
+    width: 600px;
+    height: 40px;
+}
+
+
+
+.search-in:focus{
+   outline: none;
+}
+
+.title{
+    color:white;
+    font-family: "Roboto";
+    margin-left: '40px' !important;
+}
