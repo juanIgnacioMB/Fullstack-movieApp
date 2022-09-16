@@ -71,7 +71,7 @@ function Home() {
     
 
         {error && 
-       <h1 style={{marginTop: "15px"}}>Movie not found! :(</h1>}
+       <h1 style={{marginTop: "15px"}}>Movie not foud! :(</h1>}
       </Col>
      
 
