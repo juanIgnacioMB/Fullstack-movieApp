@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,700;1,200;1,400&display=swap');
+
 .navm{
-    background-color: #145DA0;
+    background-color: #2398f1;
+    
     font-size: 20px;
     height: 55px;
     margin-bottom: 30px;
 }
-h3{
-    color: white;
-    font-family: "roboto";
-}
+

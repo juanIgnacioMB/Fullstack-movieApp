@@ -17,7 +17,7 @@ function Menu() {
   return (
     <>
       <Nav className="navm">
-        <h3>Movie-App</h3>
+        <h1>🎞️</h1>
         <Nav.Item>
           <Nav.Link
             to="/"
