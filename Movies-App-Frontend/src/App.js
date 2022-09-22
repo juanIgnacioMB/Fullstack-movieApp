@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="cont">
       <AuthProvider>
-        <div style={{backgroundColor: "#131416", minHeight: "100vh"}}>
+        <div className="cont2">
         <Routing />
         </div>
       </AuthProvider>

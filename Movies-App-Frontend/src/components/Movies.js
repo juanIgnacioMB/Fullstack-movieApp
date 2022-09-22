@@ -25,6 +25,14 @@ function Movies(props) {
     }
   };
 
+  const overviewLimit=(over)=>{
+  if(over.length > 350){
+    return over.slice(0,347).concat("...")
+  }else{
+    return over
+  }
+  }
+
   useEffect(() => {
     
     const infoResponse = async () => {
@@ -118,7 +126,7 @@ function Movies(props) {
           showDetails={showDetailsButton}
           title={info?.original_title}
           image={"https://image.tmdb.org/t/p/original/"+info?.poster_path}
-          plot={info?.overview.substring(0, 300)}
+          plot={overviewLimit(info?.overview)}
           release={info?.release_date}
           votes={info?.vote_average}
           genre={info?.genres[0]?.name || "N/A"}

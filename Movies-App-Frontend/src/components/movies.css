@@ -1,5 +1,5 @@
 .cardc {
-    border: solid red 2px;
+    border: 10px solid red;
     width: 18rem;
     height: 30rem;
     z-index: "2";
@@ -8,15 +8,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.5s ease-in-out;
 }
+
+
 
 .colm {
     color: #3399FF;
     margin-bottom: 30px;
-   
     align-items: center;
     justify-content: center;
-    
+
+
 
 
 }
@@ -25,7 +28,10 @@
     width: 14rem;
     height: 22rem;
     border-radius: "5px";
+
 }
+
+
 
 .cont-button {
     display: flex;

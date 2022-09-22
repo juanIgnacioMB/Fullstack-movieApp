@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import { login } from "../services/ApiService";
+import "./Form.css"
 import { Navigate, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import swal from "sweetalert";
@@ -44,7 +44,7 @@ function Login(props) {
 
   return (
     <>
-      <Container>
+      <Container >
         <Row>
           <Col></Col>
           <Col style={{ marginTop: "15vh" }}>
@@ -75,9 +75,9 @@ function Login(props) {
                 )}
               </Form.Group>
 
-              <Button variant="primary" type="submit" form="formName">
+              <button  type="submit" form="formName" className="log-btn">
                 Login
-              </Button>
+              </button>
             </Form>
           </Col>
           <Col></Col>

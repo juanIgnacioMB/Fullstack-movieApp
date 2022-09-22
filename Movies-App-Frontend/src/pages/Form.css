@@ -1,0 +1,17 @@
+.log-btn{
+    background-color: #2398f1 ;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 25px 10px 25px;
+    float: right;
+    transition: all 0.3s ease-out;
+}
+
+.log-btn:hover{
+    background-color: white;
+    color: #2398f1;
+}
+
+.cont{
+    background-image: url("https://img.freepik.com/free-vector/cinematograph-concept-background-design-with-popcorn-3d-glasses_260559-142.jpg?w=2000");
+}

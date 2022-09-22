@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { register } from "../services/ApiService";
+import "./Form.css"
 import swal from "sweetalert";
 import AuthContext from "../context/AuthContext";
 
@@ -103,9 +103,9 @@ function Register(props) {
                 
               </Form.Group>
 
-              <Button variant="primary" type="submit" form="formreg">
+              <button className="log-btn" type="submit" form="formreg">
                 Sign up
-              </Button>
+              </button>
             </Form>
           </Col>
           <Col></Col>

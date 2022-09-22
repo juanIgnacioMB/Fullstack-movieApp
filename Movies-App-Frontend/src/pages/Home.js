@@ -27,8 +27,9 @@ function Home() {
       setPopulars(false)
       setSearch("");
       console.log(response.results)
-      if (response.Error === "Movie not found!") {
+      if (response.results?.length === 0 || !response.results) {
         setError(true);
+        setPopulars(true)
       }
       if(search == ""){
         setPopulars(true)
@@ -71,7 +72,7 @@ function Home() {
     
 
         {error && 
-       <h1 style={{marginTop: "15px"}}>Movie not foud! :(</h1>}
+       <h1 className="notFound">Movie not found! :(</h1>}
       </Col>
      
 
@@ -97,7 +98,7 @@ function Home() {
         <Row style={{ marginTop: "35px" }}>
          {populars && (
           <>
-          <h1 className="title" style={{marginBottom:"35px"}}>We recommend you:</h1>
+          <h1 className="title" >We recommend you:</h1>
           
           {popularMovies.map((movie)=>(
             <Movies
@@ -111,8 +112,8 @@ function Home() {
           )}
           
           </>)}
-          {!populars && (
-            <h1 className="title" style={{marginBottom:"35px"}}>results of : {searchTitle}</h1>
+          {(!populars && !error )&& (
+            <h1 className="title" >results of : {searchTitle}</h1>
           )}
           {movies?.map((movie) => (
             <Movies
