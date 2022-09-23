@@ -9,7 +9,7 @@ function MovieDetails(props) {
 
   return details ? (
     <>
-      <div className="detail-cont">
+      
         <div className="detail-cont2">
           {image !== "https://image.tmdb.org/t/p/original/null" && <img src={image} />}
           {image == "https://image.tmdb.org/t/p/original/null" && (
@@ -34,7 +34,8 @@ function MovieDetails(props) {
         <button className="close-btn" onClick={showDetails}>
           X
         </button>
-      </div>
+     
+      
     </>
   ) : (
     ""

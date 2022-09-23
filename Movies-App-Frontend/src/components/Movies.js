@@ -4,6 +4,8 @@ import { getMoviesInfo, getPopulars } from "../services/ApiService";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { Button, Card, Row, Col } from "react-bootstrap";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+
 import "./movies.css";
 
 function Movies(props) {
@@ -32,6 +34,19 @@ function Movies(props) {
     return over
   }
   }
+  
+const pageTransition = {
+  in: {
+    opacity: 1,
+    top: 0,
+    
+  },
+  out: {
+    opacity: 0,
+    top: -100,
+    
+  },
+};
 
   useEffect(() => {
     
@@ -69,7 +84,9 @@ function Movies(props) {
   };
   return (
     <>
+    
       <Col className="colm">
+      <div className="pan">
         <Card className="cardc" bg="dark">
           {picture == "https://image.tmdb.org/t/p/original/null" && (
             <Card.Img
@@ -118,9 +135,18 @@ function Movies(props) {
             )}
           </Card.Body>
         </Card>
+        </div>
       </Col>
-
+     
       {(details) &&(
+        <AnimatePresence>
+          <motion.div 
+          
+          className="page detail-cont"
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition}>
         <MovieDetails
           details={details}
           showDetails={showDetailsButton}
@@ -131,6 +157,8 @@ function Movies(props) {
           votes={info?.vote_average}
           genre={info?.genres[0]?.name || "N/A"}
         ></MovieDetails>
+        </motion.div>
+        </AnimatePresence>
       )}
 
     </>

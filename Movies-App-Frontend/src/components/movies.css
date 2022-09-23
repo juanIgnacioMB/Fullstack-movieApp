@@ -18,11 +18,20 @@
     margin-bottom: 30px;
     align-items: center;
     justify-content: center;
-
-
-
-
+    transition: all 0.5s ease-out;
+    
 }
+
+.colm:hover {
+    color: #3399FF;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    filter:brightness(1.5);
+}
+
+
+
 
 .imgm {
     width: 14rem;
