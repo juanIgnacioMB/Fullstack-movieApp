@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+import {Nav,Container,Row} from "react-bootstrap";
 import "./Menu.css";
 
 function Menu() {
@@ -16,6 +16,7 @@ function Menu() {
 
   return (
     <>
+    
       <Nav className="navm">
         <h1>🎞️</h1>
         <Nav.Item>
@@ -78,6 +79,7 @@ function Menu() {
           </>
         )}
       </Nav>
+     
     </>
   );
 }

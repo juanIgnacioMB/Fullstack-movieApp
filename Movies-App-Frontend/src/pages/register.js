@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Container, Row, Col } from "react-bootstrap";
-import "./Form.css"
+import "./Form.css";
 import swal from "sweetalert";
 import AuthContext from "../context/AuthContext";
 
@@ -17,13 +17,10 @@ function Register(props) {
   const context = useContext(AuthContext);
 
   const onSubmit = (data) => {
-    let comp = /\S+@\S+\.\S+/
-    if(comp.test(data.email) == false){
-      swal("Invalid Email", "", "error");
-      
-     } 
-     else if(data.password === data.password2){
-    
+    let comp = /\S+@\S+\.\S+/;
+    if (comp.test(data.email) == false) {
+      swal("Invalid Email", " ", "error");
+    } else if (data.password === data.password2) {
       fetch("http://localhost:8080/users", {
         method: "POST",
         headers: {
@@ -35,30 +32,26 @@ function Register(props) {
         .then((res) => {
           if (res.message == "you sign-up correctly") {
             swal(res.message, "", "success");
-            
-            fetch("http://localhost:8080/users/login",{
-              method:"POST",
-              headers:{"content-type": "application/json"},
-            body:JSON.stringify(data)}
-            ).then((res) => res.json())
-              .then(token => {
-                console.log(token)
+
+            fetch("http://localhost:8080/users/login", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(data),
+            })
+              .then((res) => res.json())
+              .then((token) => {
+                console.log(token);
                 context.setLogin(true);
                 localStorage.setItem("token", token);
-
-              })
+              });
             navigate("/");
           } else {
-            swal(res, "", "error");
-            
+            swal(res.message, "", "error");
           }
         });
-   
-   }else{
-    swal("Please make sure yours passwords match", "", "error");
-   }
-
-  
+    } else {
+      swal("Please make sure yours passwords match", "", "error");
+    }
   };
 
   return (
@@ -79,7 +72,6 @@ function Register(props) {
                   placeholder="Enter email"
                   {...register("email")}
                 />
-                
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassoword">
@@ -89,7 +81,6 @@ function Register(props) {
                   type="password"
                   {...register("password")}
                 />
-               
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassoword2">
@@ -99,7 +90,6 @@ function Register(props) {
                   placeholder="Enter password"
                   {...register("password2")}
                 />
-                
               </Form.Group>
 
               <button className="log-btn" type="submit" form="formreg">
@@ -115,5 +105,3 @@ function Register(props) {
 }
 
 export default Register;
-
-

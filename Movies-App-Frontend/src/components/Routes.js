@@ -19,7 +19,6 @@ function Routing() {
           <Route path="/register" element={<Register />} />
           <Route path="/favs" element={<FavMovies />} />
           <Route path="/login" element={<Login />} />
-          <Route path="Moviedetails" element={<MovieDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

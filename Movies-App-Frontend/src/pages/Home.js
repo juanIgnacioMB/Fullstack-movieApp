@@ -26,7 +26,7 @@ function Home() {
       setError(false);
       setPopulars(false)
       setSearch("");
-      console.log(response.results)
+      
       if (response.results?.length === 0 || !response.results) {
         setError(true);
         setPopulars(true)
@@ -60,6 +60,7 @@ function Home() {
 
   return (
     <Container>
+    
       <Col className="search">
         <input
           type="text"
@@ -74,6 +75,7 @@ function Home() {
         {error && 
        <h1 className="notFound">Movie not found! :(</h1>}
       </Col>
+     
      
 
       <br/>

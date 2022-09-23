@@ -29,10 +29,10 @@ function Login(props) {
     })
       .then((response) => response.json())
       .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res);
 
-        if (localStorage.getItem("token").length > 40) {
+
+        if (res.token) {
+          localStorage.setItem("token", res.token)
           context.setLogin(true);
           swal("you sign-in correctly", "", "success");
           navigate("/");
