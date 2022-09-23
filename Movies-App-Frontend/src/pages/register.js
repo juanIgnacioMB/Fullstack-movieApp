@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Container, Row, Col } from "react-bootstrap";
 import "./Form.css"
 import swal from "sweetalert";
 import AuthContext from "../context/AuthContext";
@@ -58,8 +58,7 @@ function Register(props) {
     swal("Please make sure yours passwords match", "", "error");
    }
 
-   
-   
+  
   };
 
   return (
