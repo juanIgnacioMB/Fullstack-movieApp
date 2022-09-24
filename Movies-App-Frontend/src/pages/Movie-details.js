@@ -9,7 +9,8 @@ function MovieDetails(props) {
 
   return details ? (
     <>
-      
+    
+      <div className="detail-cont2"></div>
         <div className="detail-cont2">
           {image !== "https://image.tmdb.org/t/p/original/null" && <img src={image} />}
           {image == "https://image.tmdb.org/t/p/original/null" && (
@@ -29,12 +30,15 @@ function MovieDetails(props) {
             <p>{votes}</p>
             <h2>release</h2>
             <p>{release}</p>
+            
           </div>
+          
         </div>
+        
         <button className="close-btn" onClick={showDetails}>
           X
         </button>
-     
+        
       
     </>
   ) : (

@@ -1,10 +1,7 @@
 import { useState,useEffect } from "react";
 import Movies from "../components/Movies";
 import { getMovies,getPopulars } from "../services/ApiService";
-import MovieDetails from "./Movie-details";
-import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
-
-
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import "./Home.css";
 
 function Home() {
@@ -36,6 +33,15 @@ function Home() {
       }
     }
   };
+
+  const stringLimit=(value)=>{
+    if(value.length > 20){
+      return value.slice(0,17).concat("...")
+    }else{
+      return value
+    }
+    
+  }
 
 
   useEffect(()=>{
@@ -105,7 +111,7 @@ function Home() {
           {popularMovies.map((movie)=>(
             <Movies
             key={movie.id}
-            name={movie.title.substring(0, 20)}
+            name={stringLimit(movie.title)}
             picture={"https://image.tmdb.org/t/p/original/"+movie.poster_path}
             id={movie.id}
             comp="home"
@@ -120,7 +126,7 @@ function Home() {
           {movies?.map((movie) => (
             <Movies
             key={movie.id}
-            name={movie.original_title.substring(0, 20)}
+            name={stringLimit(movie.original_title)}
             picture={"https://image.tmdb.org/t/p/original/"+movie.poster_path}
             id={movie.id}
             comp="home"

@@ -1,5 +1,16 @@
+
+.colm {
+
+    color: #3399FF;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-out;
+    
+}
+
+
 .cardc {
-    border: 10px solid red;
     width: 18rem;
     height: 30rem;
     z-index: "2";
@@ -11,16 +22,6 @@
     transition: all 0.5s ease-in-out;
 }
 
-
-
-.colm {
-    color: #3399FF;
-    margin-bottom: 30px;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease-out;
-    
-}
 
 .colm:hover {
     color: #3399FF;

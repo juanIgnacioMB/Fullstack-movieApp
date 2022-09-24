@@ -1,10 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,700;1,200;1,400&display=swap');
 
-.navm{
+.header{
     background-color: #2398f1;
-    
+    width: 100% !important;
     font-size: 20px;
-    height: 55px;
-    margin-bottom: 30px;
+    padding: 0px;
+   
+    
+}
+
+.header li{
+    color: white;
+    list-style: none;
+    display: block;
+}
+
+.header ul{
+   
+    display: flex;
+  
+}
+
+.nav2{
+    padding-top: 10px;
+}
+
+
+@media (max-width: 700px){
+  
+    .navm ul{
+        flex-direction: column;
+    }
+   
 }
 

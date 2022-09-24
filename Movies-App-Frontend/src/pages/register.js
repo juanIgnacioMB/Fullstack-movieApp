@@ -63,7 +63,8 @@ function Register(props) {
             <Form
               onSubmit={handleSubmit(onSubmit)}
               style={{ color: "white", width: "500px" }}
-              id="formreg"
+             id="formreg"
+              className="form"
             >
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>

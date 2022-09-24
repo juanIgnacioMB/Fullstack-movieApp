@@ -3,7 +3,7 @@ import MovieDetails from "../pages/Movie-details";
 import { getMoviesInfo, getPopulars } from "../services/ApiService";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 
 import "./movies.css";
@@ -27,7 +27,7 @@ function Movies(props) {
     }
   };
 
-  const overviewLimit=(over)=>{
+  const stringLimit=(over)=>{
   if(over.length > 350){
     return over.slice(0,347).concat("...")
   }else{
@@ -139,10 +139,12 @@ const pageTransition = {
       </Col>
      
       {(details) &&(
+        
         <AnimatePresence>
+         
           <motion.div 
           
-          className="page detail-cont"
+          className=" detail-cont"
           initial="out"
           animate="in"
           exit="out"
@@ -152,13 +154,16 @@ const pageTransition = {
           showDetails={showDetailsButton}
           title={info?.original_title}
           image={"https://image.tmdb.org/t/p/original/"+info?.poster_path}
-          plot={overviewLimit(info?.overview)}
+          plot={stringLimit(info?.overview)}
           release={info?.release_date}
           votes={info?.vote_average}
           genre={info?.genres[0]?.name || "N/A"}
         ></MovieDetails>
         </motion.div>
+        
+        
         </AnimatePresence>
+        
       )}
 
     </>

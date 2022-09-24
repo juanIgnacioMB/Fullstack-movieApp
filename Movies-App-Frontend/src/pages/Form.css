@@ -1,17 +1,31 @@
-.log-btn{
-    background-color: #2398f1 ;
+.log-btn {
+    background-color: #2398f1;
     border-radius: 8px;
     color: white;
     padding: 10px 25px 10px 25px;
-    float: right;
     transition: all 0.3s ease-out;
+    width: 120px;
 }
 
-.log-btn:hover{
+.log-btn:hover {
     background-color: white;
     color: #2398f1;
 }
 
-.cont{
-    background-image: url("https://img.freepik.com/free-vector/cinematograph-concept-background-design-with-popcorn-3d-glasses_260559-142.jpg?w=2000");
+
+
+.form {
+   /* background-image: url("https://p4.wallpaperbetter.com/wallpaper/212/657/279/the-avengers-avengers-endgame-ant-man-avengers-endgame-black-widow-hd-wallpaper-preview.jpg");*/
+    display: flex;
+    flex-direction: column;
+    color: black !important;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+
+}
+
+input {
+    padding: 8px;
+    
 }

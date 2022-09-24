@@ -3,11 +3,14 @@
 .cont{
     font-family: 'Roboto Serif', serif;
     font-weight: 700;
+
+ 
     
 }
 
 .cont2{
     background-color: #131416;
-    min-height: 100vh
+    min-height: 100vh;
+
 }
 

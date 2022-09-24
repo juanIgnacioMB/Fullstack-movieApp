@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {Nav,Container,Row} from "react-bootstrap";
 import "./Menu.css";
 
+
 function Menu() {
   const context = useContext(AuthContext);
 
@@ -12,20 +13,23 @@ function Menu() {
     context.setLogin(false);
   };
 
+
+
   useEffect(() => {}, [context.login, context.setLogin]);
 
   return (
-    <>
+    <div className="header">
     
-      <Nav className="navm">
+      <Nav className="nav2">
         <h1>🎞️</h1>
+        <ul>
         <Nav.Item>
           <Nav.Link
             to="/"
-            style={{ color: "white", textDecoration: "none" }}
+          
             as={Link}
           >
-            🔍 Search
+           <li>  🔍 Search</li> 
           </Nav.Link>
         </Nav.Item>
         {!localStorage.getItem("token") && (
@@ -35,9 +39,9 @@ function Menu() {
                 as={Link}
                 eventKey="link-1"
                 to="/register"
-                style={{ color: "white", textDecoration: "none" }}
+                
               >
-                Sign up
+               <li> Sign up</li>
               </Nav.Link>
             </Nav.Item>
 
@@ -45,24 +49,25 @@ function Menu() {
               <Nav.Link
                 as={Link}
                 to="/login"
-                style={{ color: "white", textDecoration: "none" }}
+                
               >
-                Sign in
+                <li> Sign in</li> 
               </Nav.Link>
             </Nav.Item>
-          </>
+            </>
+            
         )}
-
+        
         {localStorage.getItem("token")  && (
           <>
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                style={{ color: "white", textDecoration: "none" }}
+                
                 to="/"
                 onClick={handleClick}
               >
-                Log Out
+               <li>  Log Out</li> 
               </Nav.Link>
             </Nav.Item>
 
@@ -71,16 +76,17 @@ function Menu() {
                 as={Link}
                 eventKey="link-2"
                 to="/favs"
-                style={{ color: "white", textDecoration: "none" }}
+                
               >
-                Fav. Movies
+                <li> Fav. Movies</li> 
               </Nav.Link>
             </Nav.Item>
           </>
         )}
+        </ul> 
       </Nav>
      
-    </>
+    </div>
   );
 }
 

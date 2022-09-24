@@ -11,7 +11,7 @@ import Login from "../pages/login";
 function Routing() {
   return (
     <BrowserRouter>
-      <Menu />
+     <Menu/>
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
