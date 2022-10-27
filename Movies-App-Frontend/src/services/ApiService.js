@@ -27,8 +27,8 @@ export async function getPopulars(){
     return fetch("https://api.themoviedb.org/3/discover/movie?api_key=a8684027aadbac0b7af1bab61fcaf3ce&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate").then(res =>res.json())
 }
 
-export async function getByGenre(){
-    return fetch("https://api.themoviedb.org/3/discover/movie?api_key=a8684027aadbac0b7af1bab61fcaf3ce&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28").then(response=>response.json())
+export async function getByGenre(id){
+    return fetch("https://api.themoviedb.org/3/discover/movie?api_key=a8684027aadbac0b7af1bab61fcaf3ce&language=en-US&with_genres="+id).then(response=>response.json())
 }
 
 export async function getGenres(){

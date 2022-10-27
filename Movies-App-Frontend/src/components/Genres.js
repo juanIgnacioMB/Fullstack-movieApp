@@ -1,23 +1,28 @@
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
+import "./genres.css"
+
 export const GenresList = (props) => {
   const context = useContext(AuthContext);
-  const { genres } = props;
-  const handleClick = (e) => {
-    context.setGenreId(e.target.value);
+  const { genres ,getMovies} = props;
+  const handleClick = (event) => {
+    context.setGenreId(event.target.value);
+    console.log(event.target.value)
   };
   return (
-    <div>
-    <h3>Filtrar por genero</h3>
+    <div className="GenreNav">
+    <div className="genreTitle"><h3>Filter by gender</h3></div>
       <ul>
-        {genres?.map((genre) => (
-          <li>
-            {" "}
-            <button value={genre?.id} onClick={handleClick}>
+          <select name="" id=""  onChange={event => {
+    handleClick(event);
+    getMovies();
+  }}>
+          {genres?.map((genre) => (
+            <option value={genre?.id}>
               {genre?.name}
-            </button>
-          </li>
+            </option>
         ))}
+        </select>
       </ul>
     </div>
   );

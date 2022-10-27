@@ -1,6 +1,5 @@
 
 .colm {
-
     color: #3399FF;
     margin-bottom: 50px;
     align-items: center;
@@ -11,8 +10,8 @@
 
 
 .cardc {
-    width: 18rem;
-    height: 30rem;
+    width: 15rem;
+    height: 18rem;
     z-index: "2";
     background-color: #212529;
     border: none;

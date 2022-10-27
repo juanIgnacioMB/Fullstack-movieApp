@@ -7,7 +7,7 @@ function AuthProvider(props) {
   const [login,setLogin] = useState(false)
   const [notMovies,setNotMovies] = useState(true)
   const [movies,setMovies] = useState([])
-  const [genreId,setGenreId] = useState("")
+  const [genreId,setGenreId] = useState("0")
   
   localStorage.setItem("favs", movies)
  

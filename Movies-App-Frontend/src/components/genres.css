@@ -1,0 +1,30 @@
+.GenreNav{
+    background-color: #2398f1;
+    width: 250px !important;
+    border-radius: 10px;
+    height: 100px;
+    /*margin: 118px 150px 0px -70px;*/
+    margin: 0 auto;
+}
+.GenreNav h3{
+    color: #2398f1;
+}
+.genreTitle{
+    background-color: white;
+    border-radius: 10px;
+}
+.GenreNav select{
+    background-color: #2398f1;
+    width: 100%;
+    color: white;
+    border: none;
+    text-align: left;
+    margin: 5px 0px 5px -32px !important;
+    transition: 0.4s all;
+    font-size: 21px;
+}
+.GenreNav button:hover{
+    background-color: white;
+    color: #2398f1;
+    
+}
