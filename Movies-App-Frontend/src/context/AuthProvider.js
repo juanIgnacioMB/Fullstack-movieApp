@@ -7,24 +7,16 @@ function AuthProvider(props) {
   const [login,setLogin] = useState(false)
   const [notMovies,setNotMovies] = useState(true)
   const [movies,setMovies] = useState([])
+  const [genreId,setGenreId] = useState("")
   
   localStorage.setItem("favs", movies)
  
-  
-
-  /*
-useEffect(()=>{
-  console.log(movies)
-
-},[setMovies])*/
 
   const mostrar = () => {
     let set = new Set( favourites.map( JSON.stringify ) )
     let movieList = Array.from( set ).map( JSON.parse );
-    
     setMovies(movieList)
   
-    
   };
 
 
@@ -38,7 +30,9 @@ useEffect(()=>{
         setFavourites,
         mostrar,
         setLogin,
-        login
+        login,
+        genreId,
+        setGenreId
       }}
     >
         {children}

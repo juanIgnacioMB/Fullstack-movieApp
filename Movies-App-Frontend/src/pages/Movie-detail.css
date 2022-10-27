@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100;0,8..144,300;0,8..144,600;1,8..144,900&family=Roboto:wght@500;700&display=swap');
 
-
-
 .detail-cont {
     position: fixed;
     top: 0;
@@ -34,7 +32,6 @@ h1 {
     font-weight: 700;
     display: flex;
     flex-direction: row;
-
     position: relative;
     padding: 32px;
     width: 70%;
@@ -74,3 +71,11 @@ h3 {
     color: #145DA0;
 }
 
+@media screen and (max-width: 1200px){
+    .detail-cont2{
+        flex-direction: column;
+    }
+    .close-btn{
+        float: left;
+    }
+}

@@ -1,8 +1,11 @@
 import { useState,useEffect } from "react";
 import Movies from "../components/Movies";
-import { getMovies,getPopulars } from "../services/ApiService";
+import { getMovies,getPopulars,getGenres } from "../services/ApiService";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { GenresList } from "../components/Genres";
 import "./Home.css";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +14,10 @@ function Home() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [popularMovies, setPopularMovies] = useState([])
+  const [genres, setGenres] = useState([])
   const [populars, setPopulars] = useState(true)
+
+const context =useContext(AuthContext)
 
   const searchMovies = async (e) => {
     if (e.key == "Enter") {
@@ -35,8 +41,8 @@ function Home() {
   };
 
   const stringLimit=(value)=>{
-    if(value.length > 20){
-      return value.slice(0,17).concat("...")
+    if(value.length > 15){
+      return value.slice(0,10).concat("...")
     }else{
       return value
     }
@@ -45,7 +51,11 @@ function Home() {
 
 
   useEffect(()=>{
-    
+    console.log(context.genreId)
+    const getGenresFunc=async()=>{
+      const response = await getGenres()
+      setGenres(response.genres)
+    }
     const getPopularsMovies = async ()=>{
       try{
         const populars = await getPopulars()
@@ -56,8 +66,9 @@ function Home() {
       }
     }
     getPopularsMovies()
+    getGenresFunc()
       
-  },[populars])
+  },[populars, context.genreId])
 
   const searching = (e) => {
     setSearch(e.target.value);
@@ -81,9 +92,7 @@ function Home() {
         {error && 
        <h1 className="notFound">Movie not found! :(</h1>}
       </Col>
-     
-     
-
+      
       <br/>
       <Container>
         <Row>
@@ -102,6 +111,7 @@ function Home() {
           </Col>
         </Row>
       </Container>
+      <GenresList genres={genres}/>
       <Container >
         <Row style={{ marginTop: "35px" }}>
          {populars && (
