@@ -4,7 +4,6 @@ import Register from "../pages/register";
 import Menu from "../pages/Menu";
 import FavMovies from "../pages/Favs-movies";
 import NotFound from "../pages/Not-found";
-import MovieDetails from "../pages/Movie-details";
 import Container from "react-bootstrap/Container";
 import Login from "../pages/login";
 

@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import MovieDetails from "./Movie-details";
-import { getMoviesInfo } from "../services/ApiService";
 import AuthContext from "../context/AuthContext";
 import Movies from "../components/Movies";
 import {  Row } from "react-bootstrap";
@@ -34,7 +32,7 @@ function FavMovies() {
       <Row style={{ marginTop: "35px" }}>
         {noFavs && <h1 style={{ color: "white", textAlign: "center" }}>no favorites movies yet</h1>}
 
-        {context.movies?.map((dat, i) => (
+        {context.movies?.map((mov,i) => (
           <Movies
             key={i}
             name={context.movies[i].name}

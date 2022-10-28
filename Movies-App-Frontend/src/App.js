@@ -4,16 +4,13 @@ import Routing from "./components/Routes";
 import AuthProvider from "./context/AuthProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 function App() {
   return (
-    <div className="cont">
-      <AuthProvider>
-        <div className="cont2">
+    <AuthProvider>
+      <div className="cont2">
         <Routing />
-        </div>
-      </AuthProvider>
-    </div>
+      </div>
+    </AuthProvider>
   );
 }
 

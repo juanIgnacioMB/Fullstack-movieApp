@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Movies from "../components/Movies";
+import Movies  from "../components/Movies";
+import { MovieList } from "../components/MovieList";
 import {
   getMovies,
   getPopulars,
@@ -21,7 +22,6 @@ function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
-  const [populars, setPopulars] = useState(true);
 
   const context = useContext(AuthContext);
 
@@ -30,37 +30,25 @@ function Home() {
       const response = await getMovies(search);
       setSearchTitle(search);
       setLoading(true);
-      setMovieByGenre(false)
+      setMovieByGenre(false);
       setMovies(response.results);
       setLoading(false);
-      setError(false);
-      setPopulars(false);
+      setError(false);    
       setSearch("");
 
       if (response.results?.length === 0 || !response.results) {
         setError(true);
-        setPopulars(true);
       }
-      if (search == "") {
-        setPopulars(true);
-      }
+  
     }
   };
 
-  const stringLimit = (value) => {
-    if (value.length > 15) {
-      return value.slice(0, 10).concat("...");
-    } else {
-      return value;
-    }
-  };
   const getMoviesByGenre = async () => {
-    setPopulars(false)
     const response = await getByGenre(context.genreId);
     setMovieByGenre(response.results);
   };
   useEffect(() => {
-    console.log(movieByGenre)
+    console.log(movieByGenre);
 
     const getGenresFunc = async () => {
       const response = await getGenres();
@@ -79,7 +67,7 @@ function Home() {
     getPopularsMovies();
     getGenresFunc();
     getMoviesByGenre();
-  }, [populars, context.genreId]);
+  }, [ context.genreId]);
 
   const searching = (e) => {
     setSearch(e.target.value);
@@ -96,10 +84,12 @@ function Home() {
           placeholder=" press enter to search..."
           value={search}
         />
-        {(populars || movieByGenre) && <GenresList genres={genres} getMovies={getMoviesByGenre}/>}
+        {( error || movieByGenre) && (
+          <GenresList genres={genres} getMovies={getMoviesByGenre} />
+        )}
 
-        {error && <h1 className="notFound">Movie not found! :(</h1>}
-        
+        {error && (
+        <h1 className="notFound">Movie not found! :(</h1>)}
       </Col>
 
       <br />
@@ -122,56 +112,28 @@ function Home() {
       </Container>
 
       <Container className="contGenreList">
-       
         <Row style={{ marginTop: "35px" }}>
-          { context.genreId == "0" && (
+          {movieByGenre.length == 0 && (
             <>
-             <h1 className="title">We recommend you:</h1>
-              {popularMovies.map((movie) => (
-                <Movies
-                  key={movie.id}
-                  name={stringLimit(movie.title)}
-                  picture={
-                    "https://image.tmdb.org/t/p/original/" + movie.poster_path
-                  }
-                  id={movie.id}
-                  comp="home"
-                />
-              ))}
+              <h1 className="title">We recommend you:</h1>
+              <MovieList moviesArr={popularMovies} comp="home"/>
             </>
           )}
-
           {movieByGenre && (
             <>
-             {movieByGenre.lenght == "0" && <h1 className="title">We recommend you:</h1> }
-              {movieByGenre.map((movie) => (
-                <Movies
-                  key={movie.id}
-                  name={stringLimit(movie.title)}
-                  picture={
-                    "https://image.tmdb.org/t/p/original/" + movie.poster_path
-                  }
-                  id={movie.id}
-                  comp="home"
-                />
-              ))}
+              {movieByGenre.lenght == "0" && (
+                <h1 className="title">We recommend you:</h1>
+              )}
+             <MovieList moviesArr={movieByGenre} comp="home"/>
             </>
           )}
 
-          {!populars && !error && !movieByGenre && (
-            <h1 className="title">results of : {searchTitle}</h1>
+          {!error && !movieByGenre && (
+            <>
+              <h1 className="title">results of : {searchTitle}</h1>
+              <MovieList moviesArr={movies} comp="home"/>
+            </>
           )}
-          {movies?.map((movie) => (
-            <Movies
-              key={movie.id}
-              name={stringLimit(movie.original_title)}
-              picture={
-                "https://image.tmdb.org/t/p/original/" + movie.poster_path
-              }
-              id={movie.id}
-              comp="home"
-            />
-          ))}
         </Row>
       </Container>
     </Container>
