@@ -21,19 +21,17 @@ function Movies(props) {
       setdetails(false);
     } else {
       setdetails(true);
-      console.log(popular,name,details)
+      console.log(popular, name, details);
     }
   };
 
-
   useEffect(() => {
-    
     const infoResponse = async () => {
       try {
         const response = await getMoviesInfo(id);
-
         setInfo(response);
         setSearch(searching);
+        console.log(picture)
       } catch (e) {
         setError(true);
       }
@@ -62,66 +60,61 @@ function Movies(props) {
   };
   return (
     <>
-    
       <Col className="colm">
-      <div className="pan">
-        <Card className="cardc" bg="dark">
-          {picture == "https://image.tmdb.org/t/p/original/null" && (
-            <Card.Img
-              variant="top"
-              src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg"
-              className="imgm"
-            />
-          )}
-          {picture !== "https://image.tmdb.org/t/p/original/null" && (
-            <Card.Img variant="top" src={picture} className="imgm" />
-          )}
+        <div className="pan">
+          <Card className="cardc" bg="dark">
+            {picture == "https://image.tmdb.org/t/p/original/null" && (
+              <Card.Img
+                variant="top"
+                src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg"
+                className="imgm"
+              />
+            )}
+            {picture !== "https://image.tmdb.org/t/p/original/null" && (
+              <Card.Img variant="top" src={picture} className="imgm" />
+            )}
 
-          <Card.Body>
-            <Card.Title style={{ textAlign: "center" }}>{name}</Card.Title>
+            <Card.Body>
+              <Card.Title style={{ textAlign: "center" }}>{name}</Card.Title>
 
-            {comp === "home" && (
-              <div>
-                {localStorage.getItem("token") && (
-                  <Button variant="primary" onClick={fav}>
-                    Favs
+              {comp === "home" && (
+                <div>
+                  {localStorage.getItem("token") && (
+                    <Button variant="primary" onClick={fav}>
+                      Favs
+                    </Button>
+                  )}
+                  <Link to={"/MovieDetails/" + info?.id}>
+                    <Button
+                      variant="primary"
+                      onClick={showDetailsButton}
+                      style={{ marginLeft: "15px" }}
+                    >
+                      See more
+                    </Button>
+                  </Link>
+                </div>
+              )}
+              {comp === "favs" && (
+                <div className="cont-button">
+                  <Button variant="primary" onClick={removeFav}>
+                    remove
                   </Button>
-                )}
-                <Link to={"/MovieDetails/"+ info?.id}> 
-                <Button
-                  variant="primary"
-                  onClick={showDetailsButton}
-                  style={{ marginLeft: "15px" }}
-                >
-                  See more
-                </Button>
-                </Link>
-              </div>
-            )}
-            {comp === "favs" && (
-              <div className="cont-button">
-                <Button variant="primary" onClick={removeFav}>
-                  remove
-                </Button>
-                <Link to={"/MovieDetails/"+ info?.id}> 
-                <Button
-                  variant="primary"
-                  onClick={showDetailsButton}
-                  style={{ marginLeft: "15px" }}
-                >
-                  See more
-                </Button>
-                </Link>
-                
-              </div>
-            )}
-          </Card.Body>
-        </Card>
+                  <Link to={"/MovieDetails/" + info?.id}>
+                    <Button
+                      variant="primary"
+                      onClick={showDetailsButton}
+                      style={{ marginLeft: "15px" }}
+                    >
+                      See more
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
         </div>
       </Col>
-     
-   
-
     </>
   );
 }

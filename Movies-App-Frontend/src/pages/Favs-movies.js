@@ -5,7 +5,6 @@ import {  Row } from "react-bootstrap";
 import {  useNavigate} from "react-router-dom"
 import swal from "sweetalert";
 
-
 function FavMovies() {
   const context = useContext(AuthContext);
   const Navigate = useNavigate()
@@ -41,6 +40,8 @@ function FavMovies() {
             comp="favs"
           />
         ))}
+          
+          
       </Row>
     </>
   );

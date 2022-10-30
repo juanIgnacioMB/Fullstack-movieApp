@@ -1,4 +1,5 @@
 import Movies from "./Movies";
+import "./MovieList.css"
 
 
 export const MovieList = (props) => {
@@ -15,33 +16,13 @@ export const MovieList = (props) => {
  
 return(
     <>
+    
   {moviesArr?.map((movie)=>(
-    <Movies key={movie.id}name={stringLimit(movie.original_title)} picture={"https://image.tmdb.org/t/p/original/" +movie.poster_path} id={movie.id} comp={comp}/>
+   <Movies key={movie.id}name={stringLimit(movie.original_title)} picture={"https://image.tmdb.org/t/p/original/" +movie.poster_path} id={movie.id} comp={comp}/>
   ))}
+
 
   
   </>
 )
 };
-
-
-/*<Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider> */

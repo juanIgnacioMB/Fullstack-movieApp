@@ -6,11 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
+    <div className="cont2">
     <AuthProvider>
-      <div className="cont2">
+     
         <Routing />
-      </div>
+      
     </AuthProvider>
+    </div>
   );
 }
 
