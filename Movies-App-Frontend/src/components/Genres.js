@@ -11,16 +11,21 @@ export const GenresList = (props) => {
   };
   return (
     <div className="GenreNav">
-    <div className="genreTitle"><h3>Filter by gender</h3></div>
+   
       <ul>
           <select name="" id=""  onChange={event => {
     handleClick(event);
     getMovies();
   }}>
+    <option value="">Movies by genre</option>
           {genres?.map((genre) => (
-            <option value={genre?.id}>
+            <>
+            
+            <option value={genre?.id} key={genre.id}>
               {genre?.name}
+              
             </option>
+            </>
         ))}
         </select>
       </ul>

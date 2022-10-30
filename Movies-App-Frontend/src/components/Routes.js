@@ -7,6 +7,8 @@ import NotFound from "../pages/Not-found";
 import Container from "react-bootstrap/Container";
 import Login from "../pages/login";
 
+import { MovieDetailsB } from "../pages/MovieDetails";
+
 function Routing() {
   return (
     <BrowserRouter>
@@ -18,6 +20,7 @@ function Routing() {
           <Route path="/register" element={<Register />} />
           <Route path="/favs" element={<FavMovies />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/MovieDetails/:id" element={<MovieDetailsB />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
-import Movies  from "../components/Movies";
 import { MovieList } from "../components/MovieList";
 import {
   getMovies,
   getPopulars,
-  getGenres,
   getByGenre,
 } from "../services/ApiService";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import { GenresList } from "../components/Genres";
 import "./Home.css";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
@@ -20,7 +17,6 @@ function Home() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [popularMovies, setPopularMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
 
   const context = useContext(AuthContext);
@@ -48,12 +44,7 @@ function Home() {
     setMovieByGenre(response.results);
   };
   useEffect(() => {
-    console.log(movieByGenre);
-
-    const getGenresFunc = async () => {
-      const response = await getGenres();
-      setGenres(response.genres);
-    };
+    
     const getPopularsMovies = async () => {
       try {
         const populars = await getPopulars();
@@ -62,10 +53,7 @@ function Home() {
         console.log(e);
       }
     };
-
-    console.log(movieByGenre);
     getPopularsMovies();
-    getGenresFunc();
     getMoviesByGenre();
   }, [ context.genreId]);
 
@@ -84,14 +72,10 @@ function Home() {
           placeholder=" press enter to search..."
           value={search}
         />
-        {( error || movieByGenre) && (
-          <GenresList genres={genres} getMovies={getMoviesByGenre} />
-        )}
-
+        
         {error && (
         <h1 className="notFound">Movie not found! :(</h1>)}
       </Col>
-
       <br />
       <Container>
         <Row>
@@ -113,7 +97,7 @@ function Home() {
 
       <Container className="contGenreList">
         <Row style={{ marginTop: "35px" }}>
-          {movieByGenre.length == 0 && (
+        {movieByGenre.length == 0 && (
             <>
               <h1 className="title">We recommend you:</h1>
               <MovieList moviesArr={popularMovies} comp="home"/>
@@ -121,9 +105,6 @@ function Home() {
           )}
           {movieByGenre && (
             <>
-              {movieByGenre.lenght == "0" && (
-                <h1 className="title">We recommend you:</h1>
-              )}
              <MovieList moviesArr={movieByGenre} comp="home"/>
             </>
           )}

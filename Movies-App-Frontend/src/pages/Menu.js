@@ -1,21 +1,30 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect,useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import {Nav,Container,Row} from "react-bootstrap";
+import {Nav} from "react-bootstrap";
+import { GenresList } from "../components/Genres";
+import { getGenres } from "../services/ApiService";
 import "./Menu.css";
+
 
 
 function Menu() {
   const context = useContext(AuthContext);
-
+  const [genres,setGenres] = useState([])
   const handleClick = () => {
     localStorage.clear();
     context.setLogin(false);
   };
 
-
-
-  useEffect(() => {}, [context.login, context.setLogin]);
+  useEffect((
+    
+  ) => {
+    const getGenresMov = async()=>{
+      const response = await getGenres()
+      setGenres(response.genres)
+        }
+        getGenresMov()
+  }, [context.login, context.setLogin]);
 
   return (
     <div className="header">
@@ -54,7 +63,9 @@ function Menu() {
                 <li> Sign in</li> 
               </Nav.Link>
             </Nav.Item>
+            <GenresList genres={genres}/>
             </>
+           
             
         )}
         
@@ -80,7 +91,9 @@ function Menu() {
               >
                 <li> Fav. Movies</li> 
               </Nav.Link>
+             
             </Nav.Item>
+            <GenresList genres={genres}/>
           </>
         )}
         </ul> 

@@ -1,10 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import MovieDetails from "../pages/Movie-details";
-import { getMoviesInfo, getPopulars } from "../services/ApiService";
-import { Link } from "react-router-dom";
+import { getMoviesInfo } from "../services/ApiService";
 import AuthContext from "../context/AuthContext";
 import { Button, Card, Row, Col, Container } from "react-bootstrap";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./movies.css";
 
@@ -27,26 +25,6 @@ function Movies(props) {
     }
   };
 
-  const stringLimit=(over)=>{
-  if(over.length > 350){
-    return over.slice(0,347).concat("...")
-  }else{
-    return over
-  }
-  }
-  
-const pageTransition = {
-  in: {
-    opacity: 1,
-    top: 0,
-    
-  },
-  out: {
-    opacity: 0,
-    top: -100,
-    
-  },
-};
 
   useEffect(() => {
     
@@ -109,6 +87,7 @@ const pageTransition = {
                     Favs
                   </Button>
                 )}
+                <Link to={"/MovieDetails/"+ info?.id}> 
                 <Button
                   variant="primary"
                   onClick={showDetailsButton}
@@ -116,6 +95,7 @@ const pageTransition = {
                 >
                   See more
                 </Button>
+                </Link>
               </div>
             )}
             {comp === "favs" && (
@@ -123,7 +103,7 @@ const pageTransition = {
                 <Button variant="primary" onClick={removeFav}>
                   remove
                 </Button>
-
+                <Link to={"/MovieDetails/"+ info?.id}> 
                 <Button
                   variant="primary"
                   onClick={showDetailsButton}
@@ -131,6 +111,8 @@ const pageTransition = {
                 >
                   See more
                 </Button>
+                </Link>
+                
               </div>
             )}
           </Card.Body>
@@ -138,33 +120,7 @@ const pageTransition = {
         </div>
       </Col>
      
-      {(details) &&(
-        
-        <AnimatePresence>
-         
-          <motion.div 
-          
-          className=" detail-cont"
-          initial="out"
-          animate="in"
-          exit="out"
-          variants={pageTransition}>
-        <MovieDetails
-          details={details}
-          showDetails={showDetailsButton}
-          title={info?.original_title}
-          image={"https://image.tmdb.org/t/p/original/"+info?.poster_path}
-          plot={stringLimit(info?.overview)}
-          release={info?.release_date}
-          votes={info?.vote_average}
-          genre={info?.genres[0]?.name || "N/A"}
-        ></MovieDetails>
-        </motion.div>
-        
-        
-        </AnimatePresence>
-        
-      )}
+   
 
     </>
   );

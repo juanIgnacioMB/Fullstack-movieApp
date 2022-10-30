@@ -40,14 +40,13 @@
 
 }
 
-
-
 .cont-button {
     display: flex;
-    width: 230px;
+    width: 240px;
 }
 
 .cont-button button {
     height: 40px;
-    width: 230px;
+    width: 100px;
+    margin-left: 13px;
 }

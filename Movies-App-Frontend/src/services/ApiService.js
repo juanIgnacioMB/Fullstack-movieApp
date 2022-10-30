@@ -13,9 +13,7 @@ export async function register(){
 export async function login(emailAndPassword){
     
    return fetch("http://localhost:8080/users",{method: "POST", body:JSON.stringify(emailAndPassword)}).then(response => response.json())
-    
 }
-
 
 export async function getMoviesInfo(id){
     

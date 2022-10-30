@@ -26,9 +26,8 @@
 }
 
 
-@media (max-width: 700px){
-  
-    .navm ul{
+@media (max-width: 500px){
+    .header ul{
         flex-direction: column;
     }
    
