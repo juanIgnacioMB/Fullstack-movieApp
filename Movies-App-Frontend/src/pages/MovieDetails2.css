@@ -31,7 +31,7 @@ h1 {
 }
 
 
-.detail-cont2 img {
+.Image{
     border-radius: 6px;
     width: 300px;
     height: 500px;
@@ -64,12 +64,18 @@ margin: 0px 5px 0px 5px;
 .sliderCont{
     margin-top: 60px;
     padding: 5px;
+    width: 100%;
    
 }
 
 .sliderCarr{
-  width: 400px;
-  margin: 50px 0px 0px 300px;
+  width: 800px;
+  margin: 50px 0px 0px 100px;
+}
+
+.recommendedMovie{
+    width: 10rem ;
+    height: 15rem ;
 }
 
 .close-btn:hover {
@@ -77,13 +83,29 @@ margin: 0px 5px 0px 5px;
 }
 
 @media screen and (max-width: 1200px){
-    .detail-cont2{
-        flex-direction: column;
-    }
     .detail-cont3{
-        margin: 50px 0px 0px 46px;
+        flex-direction: column;
+        margin: 0 auto;
     }
-    .detail-cont2 img{
+    .sliderCarr{
+        width: 450px;
+        /*margin: 50px 0px 0px 100px;*/
+      }
+      
+    .Image{
         margin: 50px 0px 0px 46px;
+        width: 150px;
+        height: 250px;
+        }
+        .recommendedMovie{
+            width: 7rem;
+            height: 9rem;
+        }
+        
+}
+
+@media screen and (max-width: 600px){
+    .sliderCarr{
+        width: 150px;
     }
 }

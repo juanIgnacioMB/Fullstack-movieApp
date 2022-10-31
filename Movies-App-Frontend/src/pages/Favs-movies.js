@@ -15,7 +15,7 @@ function FavMovies() {
    swal("You must login to see favourites movies","","error")
       Navigate("/")
     }
-    context.mostrar();
+    context.Filter();
     if (context.movies.length == 0) {
       setNoFavs(true);
     } else {
@@ -28,7 +28,7 @@ function FavMovies() {
 
   return (
     <>
-      <Row style={{ marginTop: "35px" }}>
+      <Row style={{ marginTop: "35px", height:"100%"}}>
         {noFavs && <h1 style={{ color: "white", textAlign: "center" }}>no favorites movies yet</h1>}
 
         {context.movies?.map((mov,i) => (

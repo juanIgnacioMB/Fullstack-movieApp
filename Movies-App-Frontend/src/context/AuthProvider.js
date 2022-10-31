@@ -12,7 +12,7 @@ function AuthProvider(props) {
   localStorage.setItem("favs", movies)
  
 
-  const mostrar = () => {
+  const Filter = () => {
     let set = new Set( favourites.map( JSON.stringify ) )
     let movieList = Array.from( set ).map( JSON.parse );
     setMovies(movieList)
@@ -28,7 +28,7 @@ function AuthProvider(props) {
         notMovies,
         setMovies,
         setFavourites,
-        mostrar,
+        Filter,
         setLogin,
         login,
         genreId,

@@ -1,10 +1,8 @@
 import Movies from "./Movies";
-import "./MovieList.css"
-
 
 export const MovieList = (props) => {
-  const { moviesArr,comp } = props;
-  
+  const { moviesArr, comp } = props;
+
   const stringLimit = (value) => {
     if (value.length > 10) {
       return value.slice(0, 6).concat("...");
@@ -13,16 +11,17 @@ export const MovieList = (props) => {
     }
   };
 
- 
-return(
+  return (
     <>
-    
-  {moviesArr?.map((movie)=>(
-   <Movies key={movie.id}name={stringLimit(movie.original_title)} picture={"https://image.tmdb.org/t/p/original/" +movie.poster_path} id={movie.id} comp={comp}/>
-  ))}
-
-
-  
-  </>
-)
+      {moviesArr?.map((movie) => (
+        <Movies
+          key={movie.id}
+          name={stringLimit(movie.original_title)}
+          picture={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
+          id={movie.id}
+          comp={comp}
+        />
+      ))}
+    </>
+  );
 };

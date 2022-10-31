@@ -19,10 +19,18 @@
     padding: 30px;
     background-color: white;
     border-radius: 8px;
+    color: white;
+     width: 500px 
 
 }
 
 input {
     padding: 8px;
     
+}
+
+@media screen and (max-width: 800px){
+    .form{
+        width: 250px !important;
+    }
 }

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams,Link} from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { getMoviesInfo,getPopulars } from "../services/ApiService";
 import Slider from "react-slick";
@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./MovieDetails2.css";
 import AuthContext from "../context/AuthContext";
 import { Button } from "react-bootstrap";
-import Movies from "../components/Movies";
+
 
 export const MovieDetailsB = () => {
   const [info, setInfo] = useState({});
@@ -18,11 +18,46 @@ export const MovieDetailsB = () => {
   const context = useContext(AuthContext);
 
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: false,
+    infinite: false,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          width:500,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 3,
+          infinite: false,
+          dots: false,
+          arrows: true,
+          
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          arrows: true,
+        }
+      }
+    ]
+
   };
 
   useEffect(() => {
@@ -40,26 +75,27 @@ export const MovieDetailsB = () => {
     }
    getPopularsMovies()
     getMovie();
-  }, [setInfo]);
+  }, [setInfo,id]);
   console.log(movieImage);
   const fav = () => {
     context.setFavourites([
       ...context.favourites,
       { name: info?.original_title, id: info?.id, image: "https://image.tmdb.org/t/p/original/" + info.poster_path },
     ]);
-    context.mostrar();
+    context.Filter();
   };
 
   return (
     <div className="detail-cont2">
       <div className="detail-cont3">
         {movieImage !== "https://image.tmdb.org/t/p/original/null" && (
-          <img src={movieImage} />
+          <img src={movieImage}  className="Image" />
         )}
         {movieImage == "https://image.tmdb.org/t/p/original/null" && (
           <img
             src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg"
             alt=""
+            className="Image"
           />
         )}
 
@@ -86,7 +122,8 @@ export const MovieDetailsB = () => {
         <h3>You can also see</h3>
         <Slider {...settings} className="sliderCarr">
           {recomendedMovies.map((movie)=>(
-            <Movies name={movie.original_title} picture={ "https://image.tmdb.org/t/p/original/" + movie.poster_path} id={movie.id}/>
+           <Link to={"/MovieDetails/"+movie.id}><img className="recommendedMovie" src={"https://image.tmdb.org/t/p/original/" +movie.poster_path}
+            /></Link>
           ))}
         </Slider>
       </div>
