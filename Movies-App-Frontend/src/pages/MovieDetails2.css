@@ -87,13 +87,14 @@ margin: 0px 5px 0px 5px;
         flex-direction: column;
         margin: 0 auto;
     }
+  
     .sliderCarr{
         width: 450px;
         /*margin: 50px 0px 0px 100px;*/
       }
       
     .Image{
-        margin: 50px 0px 0px 46px;
+        margin: 50px 0px 30px 46px;
         width: 150px;
         height: 250px;
         }

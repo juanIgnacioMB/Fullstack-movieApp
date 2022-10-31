@@ -76,8 +76,8 @@ export const MovieDetailsB = () => {
    getPopularsMovies()
     getMovie();
   }, [setInfo,id]);
-  console.log(movieImage);
   const fav = () => {
+   
     context.setFavourites([
       ...context.favourites,
       { name: info?.original_title, id: info?.id, image: "https://image.tmdb.org/t/p/original/" + info.poster_path },
@@ -121,8 +121,8 @@ export const MovieDetailsB = () => {
       <div className="sliderCont">
         <h3>You can also see</h3>
         <Slider {...settings} className="sliderCarr">
-          {recomendedMovies.map((movie)=>(
-           <Link to={"/MovieDetails/"+movie.id}><img className="recommendedMovie" src={"https://image.tmdb.org/t/p/original/" +movie.poster_path}
+          {recomendedMovies.map((movie,i)=>(
+           <Link key={i}to={"/MovieDetails/"+movie.id}><img className="recommendedMovie" src={"https://image.tmdb.org/t/p/original/" +movie.poster_path}
             /></Link>
           ))}
         </Slider>

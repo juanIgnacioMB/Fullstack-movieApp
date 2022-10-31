@@ -7,7 +7,6 @@ export const GenresList = (props) => {
   const { genres ,getMovies} = props;
   const handleClick = (event) => {
     context.setGenreId(event.target.value);
-    console.log(event.target.value)
   };
   return (
     <div className="GenreNav">
@@ -19,13 +18,12 @@ export const GenresList = (props) => {
   }}>
     <option value="">Movies by genre</option>
           {genres?.map((genre) => (
-            <>
             
             <option value={genre?.id} key={genre.id}>
               {genre?.name}
               
             </option>
-            </>
+            
         ))}
         </select>
       </ul>

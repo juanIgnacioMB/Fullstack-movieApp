@@ -8,7 +8,7 @@ import swal from "sweetalert";
 function FavMovies() {
   const context = useContext(AuthContext);
   const Navigate = useNavigate()
-  const [noFavs, setNoFavs] = useState(false);
+  
 
   useEffect(() => {
     if(!localStorage.getItem("token")){
@@ -16,11 +16,7 @@ function FavMovies() {
       Navigate("/")
     }
     context.Filter();
-    if (context.movies.length == 0) {
-      setNoFavs(true);
-    } else {
-      setNoFavs(false);
-    }
+  
     
   }, [context.setMovies]);
 
@@ -29,7 +25,7 @@ function FavMovies() {
   return (
     <>
       <Row style={{ marginTop: "35px", height:"100%"}}>
-        {noFavs && <h1 style={{ color: "white", textAlign: "center" }}>no favorites movies yet</h1>}
+        {context.movies.length==0 && <h1 style={{ color: "white", textAlign: "center" }}>no favorites movies yet</h1>}
 
         {context.movies?.map((mov,i) => (
           <Movies

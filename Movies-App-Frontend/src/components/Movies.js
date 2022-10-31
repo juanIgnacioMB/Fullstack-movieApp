@@ -31,7 +31,6 @@ function Movies(props) {
         const response = await getMoviesInfo(id);
         setInfo(response);
         setSearch(searching);
-        console.log(picture)
       } catch (e) {
         setError(true);
       }
