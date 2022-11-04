@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "npm run build",
+    "heroku-prebuild": "npm install --dev",
     "build": "webpack --config=Scripts/config/webpack.prod.js",
     "start": "node ./bin/www"
   },
