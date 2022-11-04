@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-prebuild": "npm install --dev",
-    "build": "webpack",
-    "start": "node ./bin/www"
+    "start": "node index.js",
+    "build": "webpack" 
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
