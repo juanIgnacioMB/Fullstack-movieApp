@@ -69,8 +69,8 @@ margin: 0px 5px 0px 5px;
 }
 
 .sliderCarr{
-  width: 800px;
-  margin: 50px 0px 0px 100px;
+  width: 687px;
+  margin: 50px 0px 0px 170px;
 }
 
 .recommendedMovie{
@@ -81,6 +81,9 @@ margin: 0px 5px 0px 5px;
 .close-btn:hover {
     color: #145DA0;
 }
+.slick-list{
+    width: 700px;
+}
 
 @media screen and (max-width: 1200px){
     .detail-cont3{
@@ -89,8 +92,12 @@ margin: 0px 5px 0px 5px;
     }
   
     .sliderCarr{
-        width: 450px;
-        /*margin: 50px 0px 0px 100px;*/
+        width: 400px;
+        margin: 0 auto;
+       
+      }
+      .slick-list{
+        width: 420px;
       }
       
     .Image{
@@ -99,14 +106,30 @@ margin: 0px 5px 0px 5px;
         height: 250px;
         }
         .recommendedMovie{
-            width: 7rem;
+            width: 6rem;
             height: 9rem;
         }
         
 }
+@media screen and (max-width: 900px){
+    .sliderCarr{
+        width: 350px;
+      
+    }
+    .slick-list{
+        width: 380px;
+        
+        /*padding: 5px;*/
+    }
+}
 
 @media screen and (max-width: 600px){
     .sliderCarr{
-        width: 150px;
+        width: 100px;
+      
+    }
+    .slick-list{
+        width: 130px;
+        padding: 5px;
     }
 }

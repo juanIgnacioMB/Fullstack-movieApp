@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import AuthContext from "./AuthContext";
 
 function AuthProvider(props) {
@@ -8,6 +8,7 @@ function AuthProvider(props) {
   const [notMovies,setNotMovies] = useState(true)
   const [movies,setMovies] = useState([])
   const [genreId,setGenreId] = useState("0")
+  const [details,setDetails] = useState(false)
   
   localStorage.setItem("favs", movies)
  
@@ -18,7 +19,6 @@ function AuthProvider(props) {
     setMovies(movieList)
   
   };
-
 
   return (
     <AuthContext.Provider
@@ -32,7 +32,9 @@ function AuthProvider(props) {
         setLogin,
         login,
         genreId,
-        setGenreId
+        setGenreId,
+        details,
+        setDetails
       }}
     >
         {children}

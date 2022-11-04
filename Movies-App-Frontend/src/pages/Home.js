@@ -44,7 +44,7 @@ function Home() {
     setMovieByGenre(response.results);
   };
   useEffect(() => {
-    
+    context.setDetails(false)
     const getPopularsMovies = async () => {
       try {
         const populars = await getPopulars();

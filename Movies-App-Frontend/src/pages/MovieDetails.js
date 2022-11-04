@@ -23,15 +23,16 @@ export const MovieDetailsB = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    
+    initialSlide:1,
+    mobileFirst:true,
     responsive: [
       {
         breakpoint: 1200,
         settings: {
+          initialSlide: 1,
           width:500,
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 3,
           infinite: false,
           dots: false,
           arrows: true,
@@ -41,9 +42,9 @@ export const MovieDetailsB = () => {
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 3,
+          slidesToScroll:3,
+          initialSlide: 1,
           arrows: true,
         }
       },
@@ -61,6 +62,9 @@ export const MovieDetailsB = () => {
   };
 
   useEffect(() => {
+    context.setDetails(true)
+    window.scrollTo(0, 0)
+  
     const getMovie = async () => {
       const response = await getMoviesInfo(id);
 
@@ -75,6 +79,7 @@ export const MovieDetailsB = () => {
     }
    getPopularsMovies()
     getMovie();
+    
   }, [setInfo,id]);
   const fav = () => {
    

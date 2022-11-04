@@ -1,5 +1,5 @@
 import Movies from "./Movies";
-
+import "./movieList.css"
 export const MovieList = (props) => {
   const { moviesArr, comp } = props;
 
